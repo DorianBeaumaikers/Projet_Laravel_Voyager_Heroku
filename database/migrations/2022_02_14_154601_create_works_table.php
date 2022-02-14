@@ -17,7 +17,7 @@ class CreateWorksTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('content')->nullable();
-            $table->string('image', 45)->nullable();
+            $table->text('image')->nullable();
             $table->tinyInteger('inSlider');
             $table->timestamp('created_at')->useCurrent()->useCurrentOnUpdate();
             $table->timestamp('updated_at')->nullable();

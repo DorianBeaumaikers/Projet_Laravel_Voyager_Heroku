@@ -9,7 +9,7 @@ class Tag extends Model
 {
     use HasFactory;
 
-    public function posts() {
+    public function works() {
         return $this->belongsToMany(Work::class, "works_has_tags");
     }
 }
