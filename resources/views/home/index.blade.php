@@ -89,7 +89,7 @@
                     @foreach ($works as $work)
                         <div class="col-md-4 col-sm-6">
                             <figure>
-                                <img src="{{ asset('storage/works/' . $work->image) }}">
+                                <img src="{{ asset('storage/' . $work->image) }}">
                                 <figcaption>
                                     <h3>{{ $work->title }}</h3>
                                     <span>{{ $work->client->name }}</span>
@@ -115,13 +115,13 @@
                     <h2>Latest Blog Posts</h2>
                     @foreach ($posts as $post)
                         <div class="row">
-                            <div class="col-xs-4"><a href="blog-post.html"><img src="{{ asset('assets/img/blog/1.jpg') }}"
+                            <div class="col-xs-4"><a href="blog-post.html"><img src="{{ asset('assets/img/blog/'. rand(1,4) .'.jpg') }}"
                                         alt="Post Title"></a>
                             </div>
                             <div class="col-xs-8">
                                 <div class="caption"><a href="blog-post.html">{{ $post->title }}</a></div>
                                 <div class="date">{{ $post->created_at->format('d F Y') }}</div>
-                                <div class="intro">{{ Str::words($post->content, 10, ' ...') }} <a href="posts/{{ $post->id }}/{{ Str::slug($post->title, '-') }}">Read more...</a></div>
+                                <div class="intro">{{ Str::words(strip_tags($post->content), 10, ' ...') }} <a href="posts/{{ $post->id }}/{{ Str::slug($post->title, '-') }}">Read more...</a></div>
                             </div>
                         </div>
                     @endforeach
@@ -134,29 +134,29 @@
                     <h2>Lastest FaceBook/Twitter News</h2>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="caption"><a href="full-width.html">Donec elementum mi vitae enim fermentum
+                            <div class="caption"><a href="#">Donec elementum mi vitae enim fermentum
                                     lobortis.</a></div>
                             <div class="date">16 May 2013 </div>
                             <div class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                eiusmod tempor incididunt ut labore et. <a href="full-width.html">Read more...</a></div>
+                                eiusmod tempor incididunt ut labore et. <a href="#">Read more...</a></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="caption"><a href="full-width.html">In hac habitasse platea dictumst.</a>
+                            <div class="caption"><a href="#">In hac habitasse platea dictumst.</a>
                             </div>
                             <div class="date">14 May 2013 </div>
                             <div class="intro">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat. <a href="full-width.html">Read more...</a></div>
+                                nisi ut aliquip ex ea commodo consequat. <a href="#">Read more...</a></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="caption"><a href="full-width.html"> Nam condimentum laoreet sagittis.</a>
+                            <div class="caption"><a href="#"> Nam condimentum laoreet sagittis.</a>
                             </div>
                             <div class="date">14 May 2013 </div>
                             <div class="intro">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat. <a href="full-width.html">Read more...</a></div>
+                                nisi ut aliquip ex ea commodo consequat. <a href="#">Read more...</a></div>
                         </div>
                     </div>
                 </div>

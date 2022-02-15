@@ -39,11 +39,11 @@
         <div class="container">
             <div class="row">
 
-                <ul class="grid cs-style-2">
+                <ul class="grid cs-style-2 worksList">
                     @foreach ($works as $work)
                         <div class="col-md-4 col-sm-6">
                             <figure>
-                                <img src="{{ asset('storage/works/' . $work->image) }}">
+                                <img src="{{ asset('storage/' . $work->image) }}">
                                 <figcaption>
                                     <h3>{{ $work->title }}</h3>
                                     <span>{{ $work->client->name }}</span>
@@ -58,9 +58,32 @@
             </div>
 
             <ul class="pager">
-                <li><a href="#">More works</a></li>
+                <li class="moreWork"><a href="#">More works</a></li>
             </ul>
 
         </div>
     </div>
+@endsection
+
+
+@section('scripts')
+    <script>
+        var offset = 6;
+        document.querySelector(".moreWork").onclick = function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: '/moreWorks/' + offset,
+                type: 'Get',
+                success: function(result) {
+                    document.querySelector(".worksList").insertAdjacentHTML( 'beforeend', result );
+                    offset += 6;
+                },
+                error: function(result) {
+                    console.log(result);
+                    //alert("Ajax Request Error");
+                }
+            });
+        }
+    </script>
 @endsection

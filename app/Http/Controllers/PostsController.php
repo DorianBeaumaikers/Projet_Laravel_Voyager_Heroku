@@ -9,7 +9,16 @@ use App\Models\Category;
 class PostsController extends Controller
 {
     public function index() {
-        $posts = Post::orderBy('created_at', 'desc')->take(4)->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(4);
+        
+        return view("posts.index", compact("posts"));
+        
+    }
+
+    public function indexByCategory(Category $category) {
+        $posts = Post::orderBy('created_at', 'desc')
+        ->where("category_id", $category->id)
+        ->paginate(4);
         
         return view("posts.index", compact("posts"));
         

@@ -25,11 +25,17 @@ Route::get("/works/{work}/{slug}", [\App\Http\Controllers\WorksController::class
 ->where(['work' => '[1-9][0-9]*'])
 ->name("works.show");
 
+Route::get("/moreWorks/{offset}", [\App\Http\Controllers\WorksController::class, "moreWorks"])->middleware('ajax')->name("works.moreWorks");
+
 Route::get("/posts", [\App\Http\Controllers\PostsController::class, "index"])->name("posts.index");
 
 Route::get("/posts/{post}/{slug}", [\App\Http\Controllers\PostsController::class, "show"])
 ->where(['post' => '[1-9][0-9]*'])
 ->name("posts.show");
+
+Route::get("/posts/category/{category}/{slug}", [\App\Http\Controllers\PostsController::class, "indexByCategory"])
+->where(['category' => '[1-9][0-9]*'])
+->name("posts.category");
 
 Route::get('/contact', function () {
     return view("contact.index");

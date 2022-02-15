@@ -17,7 +17,7 @@ class WorkFactory extends Factory
             'title' => $this->faker->sentence(3),
             'content' => $this->faker->text(),
             'created_at' => $this->faker->dateTime(),
-            'image' => $this->faker->numberBetween(1,8).".jpg",
+            'image' => "works/".$this->faker->numberBetween(1,8).".jpg",
             'inSlider' => $this->faker->numberBetween(0,1),
         ];
     }

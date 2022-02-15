@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="single-post-image">
-                            <img src="{{ asset('assets/img/blog/1.jpg') }}">
+                            <img src="{{ asset('assets/img/blog/'. rand(1,4) .'.jpg') }}">
                         </div>
                         <div class="single-post-info">
                             <i class="glyphicon glyphicon-time"></i>{{$post->created_at->format("d M, Y")}}
@@ -35,7 +35,7 @@
                         <div class="single-post-content">
                             <h3>{{ $post->title }}</h3>
                             <p>
-                                {{ $post->content }}
+                                {{ strip_tags($post->content) }}
                             </p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                     <h4>Categories</h4>
                     <ul class="blog-categories">
                         @foreach ($categories as $category)
-                            <li><a href="#">{{$category->name}}</a></li>
+                            <li><a href="../../posts/category/{{ $category->id }}/{{ Str::slug($category->name, '-') }}">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
 

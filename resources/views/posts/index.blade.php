@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="single-post-image">
-                                <img src="{{ asset('assets/img/blog/1.jpg') }}">
+                                <img src="{{ asset('assets/img/blog/'. rand(1,4) .'.jpg') }}">
                             </div>
 
                             <div class="single-post-info">
@@ -37,9 +37,9 @@
 
                             <div class="single-post-content">
                                 <p>
-                                    {{$post->content}}
+                                    {{strip_tags($post->content)}}
                                 </p>
-                                <a href="../../posts/{{ $post->id }}/{{ Str::slug($post->title, '-') }}" class="btn">Read more</a>
+                                <a href="../../../../posts/{{ $post->id }}/{{ Str::slug($post->title, '-') }}" class="btn">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -47,18 +47,10 @@
                 @endforeach
 
                 <!-- Pagination -->
-                <div class="pagination-wrapper ">
-                    <ul class="pagination pagination-sm">
-                        <li class="disabled"><a href="#">Previous</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">Next</a></li>
-                    </ul>
-                </div>
 
+                <div class="pagination-wrapper ">
+                    {{ $posts->links('vendor.pagination.custom') }}
+                </div>
             </div>
         </div>
     </div>

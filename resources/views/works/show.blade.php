@@ -22,7 +22,7 @@
                 <!-- Product Image & Available Colors -->
                 <div class="col-sm-6">
                     <div class="product-image-large">
-                        <img src="{{ asset('storage/works/' . $work->image) }}">
+                        <img src="{{ asset('storage/' . $work->image) }}">
                     </div>
                     <div class="colors">
                         <span class="color-white"></span>
@@ -38,7 +38,7 @@
                     <h2>{{ $work->title }}</h2>
                     <h3>Quick Overview</h3>
                     <p>
-                        {{ $work->content }}
+                        {{ strip_tags($work->content) }}
                     </p>
                     <h3>Project Details</h3>
                     <p><strong>Client: </strong>{{ $work->client->name }}</p>
@@ -73,7 +73,7 @@
                     @foreach ($similarWorks as $simWork)
                         <div class="col-md-3 col-sm-6">
                             <figure>
-                                <img src="{{ asset('storage/works/' . $simWork->image) }}">
+                                <img src="{{ asset('storage/' . $simWork->image) }}">
                                 <figcaption>
                                     <h3>{{$simWork->title}}</h3>
                                     <span>{{$simWork->client->name}}</span>
